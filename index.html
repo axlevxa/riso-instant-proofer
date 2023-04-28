@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Risograph Instant Proofer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="language" content="English">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="theme-color" content="#171515">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="riso_proofer">
+  <div id="preloader">
+    <div class="lds-ellipsis" aria-hidden="true"><div></div><div></div><div></div><div></div></div>
+    <noscript><p id="noscript">You must enable JavaScript to use this app.<p></noscript>
+  </div>
+  <header>
+    <h1 class="brand">Riso Instant Proofer</h1>
+    <button id="button-orientation" onclick='actionOrientationChange()' aria-label="Toggle orientation"><svg class="icn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff"><path d="M4.86,16.3A1,1,0,0,0,5,15.18,7.82,7.82,0,0,1,14.36,4.3l-.29.5a.49.49,0,0,0,.41.74L18,5.67a.5.5,0,0,0,.44-.76L16.55,2a.5.5,0,0,0-.85,0l-.38.66a9.72,9.72,0,0,0-12,13.43,1,1,0,0,0,1.54.24Z"/><path d="M20.81,7.51a1,1,0,1,0-1.69.87A7.82,7.82,0,0,1,8.84,18.9l.34-.59a.5.5,0,0,0-.41-.74l-3.5-.12a.49.49,0,0,0-.43.75l1.86,3a.49.49,0,0,0,.84,0l.34-.59a9.72,9.72,0,0,0,12.93-13Z"/></svg>Toggle Orientation</button></h1>
+
+  </header>
+
+  <!-- MAIN REGION-->
+  <main>
+    <div class="container">
+
+      <!-- CANVAS -->
+      <div id="section_canvas">
+        <canvas id="proof-canvas" aria-label="Color preview canvas"></canvas>
+      </div>
+
+      <!-- CONTROLS -->
+      <div id="section_controls" x-data="{ layerqty: 1 }" x-bind:class="'activelayers_' + layerqty">
+
+        <!--Intro-->
+        <div class="control-group" x-data="{ intro_open: true }">
+          <div id="proofer-intro" aria-labelledby="intro-title" x-show="intro_open" x-transition>
+            <div id="intro-img">
+              <img src="img/intro-img.png" width="80px" alt="Drawing of stack of files">
+            </div>
+            <h2 id="intro-title">How to Use</h2>
+            <ul>
+              <li>Upload <strong>grayscale JPG or PNG</strong> files. Not compatible with PDF (yet).</li>
+              <li>Actual results may look different! Each Riso ink is unique. Using colored paper can also change results.</li>
+              <li>Before printing, make sure your artwork is formatted for the correct <strong>paper size</strong>.</li>
+            </ul>
+            <button id="button-intro" aria-label="Close instructions" @click="intro_open = false">Close</button>
+          </div>
+        </div>
+
+        <!--Set number of layers-->
+        <div class="control-group">
+          <label for="layer-qty" class="control_title"><svg aria-hidden="true" class="icn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12,.87c.44.82.83,1.66,1.31,2.45,1.11,1.8,2.26,3.57,3.39,5.35a30.06,30.06,0,0,1,2.19,3.87A7.46,7.46,0,0,1,13.5,22.85a7.58,7.58,0,0,1-8.94-6.13,7.28,7.28,0,0,1,.76-4.52A40,40,0,0,1,8,7.92a44.5,44.5,0,0,0,3.21-5.28C11.46,2.05,11.72,1.45,12,.87Z"/></svg>How many ink colors?</p>
+          <select id="layer-qty" x-effect="actionLayerQtyChange(layerqty)" x-model="layerqty">
+            <template x-for="qty in 4">
+              <option x-text="qty"></option>
+            </template>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <h2 class="control_title">Layers</h2>
+          <template x-for="layercount in availableInks"><!-- Begin layer repeater-->
+            <div x-show="layercount <= layerqty" x-cloak x-transition>
+              <div class="layer" x-id="['layer_id']" x-data="{ inkColor: '' }" :class="'color_' + inkColor" x-effect="actionInkChange(inkColor)">
+                <span class="ink_tile" aria-hidden="true"></span>
+                <div class="layer_controls">
+                  <div class="ink_select" :id="$id('layer_id')" x-id="['ink_select']">
+                      <select aria-label="Select layer ink color" x-model="inkColor" :id="$id('ink_select')">
+                        <option value="" disabled>Select A Color</option>
+                        <template x-for="color in inkColorsObj">
+                          <option x-text="color"></option>
+                        </template>
+                      </select>
+                  </div>
+                  <div class="drop-container">
+                    <input name="file_input" type='file' :id="$id('file_id')" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template><!-- End layer repeater-->
+          <p><span x-text="layerqty"></span> active layer(s)</p>
+        </div>
+
+        <p class="footer control-group"><a href="https://github.com/axlevxa/riso-instant-proofer">Source code</a> | Credits: <a href="https://ireade.github.io/Toast.js/">Toast.js</a></p>
+
+      </div>
+    </div><!-- /container-->
+  </main>
+
+
+
+  <script src="js/main.js"></script>
+  <script src="js/vendor/Toast.min.js"></script>
+</body>
+
+</html>
