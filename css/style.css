@@ -292,6 +292,20 @@ main .container {
     overflow: auto;
     height: auto;
   }
+  header {
+    font-size:0.9em;
+    letter-spacing: -0.5px;
+  }
+  h1.brand {
+    font-size:0.9em;
+  }
+  #button-orientation {
+    font-size: 0.7em;
+  }
+  #button-orientation {
+    display: flex;
+    align-items: center;
+  }
   #section_controls {
     overflow: auto;
     order: 2;
