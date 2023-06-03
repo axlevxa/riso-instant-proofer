@@ -35,13 +35,13 @@ Open file `css/style.css`. Towards the top you will see a series of variables de
 Open file `index.html`. You will see this text in the HTML and can edit it.
 
 ### Misc.
-To allow preview of more or less than 4 layers, edit file `index.html`. Find the line `<template x-for="qty in 4">` and change 4 to your desired number of inks which can be previewed at one time.
+To allow preview of more or less than 4 layers, edit file `index.html`. Find the line `<template x-for="qty in 4">` and change 4 to your desired number of inks which can be previewed at one time. (Note, you also need to change `initializeCanvases()` function in `main.js` to create extra canvases)
 
 To change the default orientation of the canvas, set variable `orientationLandscape` to `false` (in file `js/main.js`).
 
 ## Support and future improvements
 
-I can't offer any support for using or installing this software. Please try to find somebody who is familiar with web hosting, etc. 
+I can't offer support for using or installing this software. Please try to find somebody who is familiar with web hosting, etc. 
 
 If you find a bug or glitch, you can report it in the issues tab here. If you have the ability to make improvements and contributions to this, please do!
 
@@ -49,6 +49,11 @@ Future possibilities for improvement include:
 
 * Set paper color
 * Set paper size dimensions
-* Higher-resolution preview
+* ~~Higher-resolution preview~~ done!
+* Edit all ink colors/settings from one config.js file
+
+Known problems:
+
+* Certain images don't display in Safari or iOS Safari. No error will be thrown.
 
 But no guarantees! :)
