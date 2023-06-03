@@ -23,6 +23,47 @@
   --box-shadow-sm: 0 1px 0 1px rgba(0,0,0,.04);
 }
 
+.layer .ink_tile {
+  /* Default ink tile background */
+  background: #929292;
+}
+
+/* =============== INK COLORS =================== */
+.color_Black .ink_tile {
+  background-color: #000;
+}
+.color_Blue .ink_tile {
+  background-color: #0078bf;
+}
+.color_BrightRed .ink_tile {
+  background-color: #f15060;
+}
+.color_Brown .ink_tile {
+  background-color: #925f52;
+}
+.color_FluorescentOrange .ink_tile {
+  background-color: #ff7477;
+}
+.color_FluorescentPink  .ink_tile {
+  background-color: #ff48b0;
+}
+.color_Green  .ink_tile {
+  background-color: #00a95c;
+}
+.color_Purple .ink_tile {
+  background-color: #765ba7;
+}
+.color_Sunflower .ink_tile {
+  background-color: #ffb511;
+}
+.color_Teal .ink_tile {
+  background-color: #00838a;
+}
+
+
+
+/* ============================================ */
+
 body {
   background: var(--brand-color);
   font-family: var(--font-stack), sans-serif;
@@ -231,7 +272,6 @@ main .container {
 }
 .layer .ink_tile {
   width: 50px;
-  background: #929292;
   display: block;
   transition: var(--transition);
 }
@@ -389,26 +429,6 @@ main .container {
   100% {
     transform: translate(24px, 0);
   }
-}
-
-/* =============== INK COLORS =================== */
-.color_Blue .ink_tile {
-  background-color: #0078bf;
-}
-.color_Teal .ink_tile {
-  background-color: #00838a;
-}
-.color_Purple .ink_tile {
-  background-color: #765ba7;
-}
-.color_BrightRed .ink_tile {
-  background-color: #f15060;
-}
-.color_Sunflower .ink_tile {
-  background-color: #ffb511;
-}
-.color_Black .ink_tile {
-  background-color: #000;
 }
 
 /* =============== TOAST JS =================== */

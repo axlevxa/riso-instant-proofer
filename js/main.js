@@ -18,6 +18,10 @@ var fileDimensions = []
 
 /* Auto-generated */
 var availableInks = Object.keys(inkColorsObj).length;
+var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
 
 /* ===== INIT ========================================= */
 initializeCanvases();
@@ -182,11 +186,11 @@ function renderProof() {
   }
   // Set orientation
   if (orientationLandscape) {
-    var width = canvas.width = 800;
-    var height = canvas.height = 500;
+    var width = canvas.width = 1400;
+    var height = canvas.height = 875;
   } else {
-    var width = canvas.width = 500;
-    var height = canvas.height = 800;
+    var width = canvas.width = 875;
+    var height = canvas.height = 1400;
   }
   ctx.clearRect(0,0,canvas.width, canvas.height);
   ctx.globalCompositeOperation = "multiply";
@@ -262,4 +266,8 @@ function testLoad() {
 window.onload = function(){
   document.getElementById("preloader").style.display = 'none';
   watchFileInputs();
+  if (isSafari) {
+    new Toast({message: "Your browser is not fully supported. If you encounter any issues, please try using desktop Firefox browser.",
+    type: 'warning'});
+  }
 }
