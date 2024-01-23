@@ -2,16 +2,16 @@
 
 This is a basic web tool for previewing grayscale artwork in different Riso ink colors. [You can try a demo here](https://reprographixed.com/txls/riso-instant-proofer/)
 
-You upload a grayscale image (JPG or PNG) for each layer and set the ink color. It will quickly render a rough preview of the result in the browser (using `<canvas>` and JavaScript)
+Upload a grayscale image (JPG or PNG) for each layer and set the ink color. It will render a rough preview of the result in the browser (using `<canvas>` and JavaScript)
 
 ![Screenshot showing a 2-color preview](preview_screenshot.png)
 
-It is easy to customize with your particular lineup of Riso ink colors, following instructions below.
+You can customize the choices of Riso ink colors, following instructions below.
 
 ## License
 
 * 100% FREE for **non-commercial** use & modification, including by not-for-profit print shops.
-* Any use for commercial or institutional projects **requires written permission!**
+* Any use for commercial/business or institutional projects **requires written permission!**
 
 ## How to use this
 
@@ -33,11 +33,13 @@ Replace the first value of each with your [ink color's hex value](https://stenci
 ### Change the style
 Open file `css/style.css`. Towards the top you will see a series of variables defining key colors of the interface. Change these values to whatever you want.
 
+Ink colors are listed in `style.css`; when you add an ink color make sure to add a corresponding style.
+
 ### Edit message shown in explainer section
 Open file `index.html`. You will see this text in the HTML and can edit it.
 
 ### Misc.
-To allow preview of more or less than 4 layers, edit file `index.html`. Find the line `<template x-for="qty in 4">` and change 4 to your desired number of inks which can be previewed at one time. (Note, you also need to change `initializeCanvases()` function in `main.js` to create extra canvases)
+To allow preview of a different number than 4 layers, edit file `index.html`. Find the line `<template x-for="qty in 4">` and change 4 to your desired number of inks which can be previewed at one time. (Note, you also need to change `initializeCanvases()` function in `main.js` to create extra canvases)
 
 To change the default orientation of the canvas, set variable `orientationLandscape` to `false` (in file `js/main.js`).
 
@@ -56,4 +58,5 @@ Future possibilities for improvement include:
 
 Known problems:
 
-* Certain images don't display in Safari or iOS Safari. Procreate images with transparent backgrounds sometimes don't render well. Users are encouraged to use Firefox.
+* Certain images don't display in Safari or iOS Safari.
+* Procreate images with transparent backgrounds sometimes don't render well. Users are encouraged to use Firefox.
