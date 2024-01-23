@@ -285,6 +285,7 @@ main .container {
   padding: 20px;
   border: 1px dashed var(--gray-80);
   cursor: pointer;
+  font-size: 90%;
 }
 
 .footer {
