@@ -258,11 +258,6 @@ function watchFileInputs() {
   }
 }
 
-function testLoad() {
-  alert('The id of the element you clicked: ' + this.id);
-  layerName = this.id;
-}
-
 window.onload = function(){
   document.getElementById("preloader").style.display = 'none';
   watchFileInputs();
