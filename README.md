@@ -1,6 +1,6 @@
 # Riso Instant Proofer
 
-This is a basic web tool for previewing grayscale artwork in different Riso ink colors. [You can try a demo here](https://reprographixed.com/txls/riso-instant-proofer/)
+This is a basic web tool for previewing grayscale artwork in different Riso ink colors. [You can try a demo here](https://reprographix.ink/txls/riso-instant-proofer/)
 
 Upload a grayscale image (JPG or PNG) for each layer and set the ink color. It will render a rough preview of the result in the browser (using `<canvas>` and JavaScript)
 
